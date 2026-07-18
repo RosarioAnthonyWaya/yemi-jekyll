@@ -1,10 +1,15 @@
 ---
 layout: "default"
-title: "Music &amp; Theatre Academy"
+title: "Music & Theatre Academy"
 nav_class: "scrolled"
 nav_cta: "Join the Academy"
 nav_cta_link: "https://mastercraftglobal.com/academy/"
+hide_popup: true
 page_styles: |
+  @media(min-width:1025px){
+    .page-hero { align-items:center; min-height:75vh; }
+    .page-hero-content { padding-top:9rem; }
+  }
   #academy-intro { padding:7rem 6rem; background:var(--white); display:grid; grid-template-columns:1fr 1.1fr; gap:7rem; align-items:start; }
   .ai-body { font-size:0.95rem; line-height:2; color:var(--mist); margin-bottom:1.2rem; }
   .ai-quote { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.25rem; line-height:1.65; color:var(--gold-dim); border-left:2px solid var(--gold); padding-left:1.5rem; margin:2rem 0; }
@@ -12,7 +17,6 @@ page_styles: |
   .ai-block { background:var(--white); padding:1.8rem 2rem; }
   .ai-block-label { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem; }
   .ai-block-val { font-size:1rem; color:var(--char); font-weight:500; }
-  
   #academy-benefits { padding:7rem 6rem; background:var(--ivory); }
   .ab-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--stone); margin-top:3.5rem; }
   .ab-card { background:var(--white); padding:3rem 2.5rem; }
@@ -20,13 +24,11 @@ page_styles: |
   .ab-title { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:400; color:var(--char); margin-bottom:0.7rem; }
   .ab-title em { font-style:italic; color:var(--gold); }
   .ab-body { font-size:0.88rem; line-height:1.85; color:var(--mist); }
-  
   #academy-who { padding:7rem 6rem; background:var(--white); }
   .aw-list { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--stone); margin-top:3rem; }
   .aw-item { background:var(--white); padding:1.5rem 1.8rem; display:flex; align-items:center; gap:0.8rem; }
   .aw-dot { width:6px; height:6px; background:var(--gold); border-radius:50%; flex-shrink:0; }
   .aw-name { font-size:0.9rem; color:var(--char); }
-  
   #academy-cta { padding:7rem 6rem; background:var(--char); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
   .act-heading { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:300; color:var(--cream); line-height:1; margin-bottom:1.5rem; }
   .act-heading em { font-style:italic; color:var(--gold); display:block; }
@@ -37,16 +39,35 @@ page_styles: |
   .act-plan:last-of-type { border-bottom:none; margin-bottom:1.5rem; }
   .act-plan-name { font-size:0.9rem; color:rgba(250,248,245,0.7); }
   .act-plan-price { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--gold); font-style:italic; }
-  
+  .ac-btn-gold { display:inline-block; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--char); background:var(--gold); padding:0.9rem 2.5rem; text-decoration:none; font-weight:600; transition:background 0.3s; }
+  .ac-btn-gold:hover { background:var(--gold-dim); }
+  .ac-btn-outline { display:inline-block; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--char); border:1px solid rgba(30,26,22,0.3); padding:0.9rem 2.5rem; text-decoration:none; transition:border-color 0.3s, color 0.3s; }
+  .ac-btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+  .ac-btn-outline-white { display:inline-block; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--cream); border:1px solid rgba(250,248,245,0.3); padding:0.9rem 2.5rem; text-decoration:none; transition:border-color 0.3s; }
+  .ac-btn-outline-white:hover { border-color:var(--gold); color:var(--gold); }
+  #academy-slide-popup { position:fixed; bottom:-160px; left:50%; transform:translateX(-50%); z-index:800; width:100%; max-width:680px; background:var(--char); border-top:2px solid var(--gold); padding:1.5rem 2rem; display:flex; align-items:center; gap:2rem; box-shadow:0 -8px 40px rgba(0,0,0,0.35); transition:bottom 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  #academy-slide-popup.visible { bottom:2rem; }
+  .asp-icon { width:48px; height:48px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Playfair Display',serif; font-size:0.75rem; letter-spacing:0.05em; color:var(--char); font-weight:600; }
+  .asp-text { flex:1; }
+  .asp-label { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem; }
+  .asp-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:400; color:var(--cream); margin-bottom:0.2rem; }
+  .asp-sub { font-size:0.8rem; color:rgba(244,244,240,0.5); }
+  .asp-cta { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--char); background:var(--gold); padding:0.7rem 1.5rem; text-decoration:none; white-space:nowrap; flex-shrink:0; }
+  .asp-close { background:none; border:none; color:rgba(244,244,240,0.3); cursor:pointer; font-size:0.9rem; padding:0.3rem; flex-shrink:0; line-height:1; }
+  .asp-close:hover { color:var(--gold); }
   @media(max-width:1024px){
-    #academy-intro,#academy-cta{grid-template-columns:1fr;padding:5rem 3rem;gap:3rem;}
-    #academy-benefits,#academy-who{padding:5rem 3rem;}
-    .ab-grid{grid-template-columns:1fr;}
-    .aw-list{grid-template-columns:1fr 1fr;}
+    #academy-intro,#academy-cta { grid-template-columns:1fr; padding:5rem 3rem; gap:3rem; }
+    #academy-benefits,#academy-who { padding:5rem 3rem; }
+    .ab-grid { grid-template-columns:1fr; }
+    .aw-list { grid-template-columns:1fr 1fr; }
   }
   @media(max-width:767px){
-    #academy-intro,#academy-benefits,#academy-who,#academy-cta{padding-left:1.5rem!important;padding-right:1.5rem!important;}
-    .aw-list{grid-template-columns:1fr;}
+    #academy-intro,#academy-benefits,#academy-who,#academy-cta { padding-left:1.5rem!important; padding-right:1.5rem!important; }
+    .aw-list { grid-template-columns:1fr; }
+    #academy-slide-popup { max-width:calc(100% - 2rem); flex-wrap:wrap; gap:1rem; padding:1.2rem 1.5rem; bottom:-200px; }
+    #academy-slide-popup.visible { bottom:1rem; }
+    .asp-icon { display:none; }
+    .asp-cta { width:100%; text-align:center; }
   }
 ---
 
@@ -69,32 +90,17 @@ page_styles: |
     <p class="ai-body">The Academy meets at least once every month for training, networking, mentorship, rehearsals, and community engagement — creating a consistent, supportive rhythm of growth.</p>
     <p class="ai-body">Membership is open to all experience levels. Whether you are an established professional or just beginning your creative journey, there is a place for you here.</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-      <a href="https://mastercraftglobal.com/academy/" target="_blank" class="cta-primary">Join the Academy →</a>
-      <a href="https://mastercraftglobal.com/academy/#membership" target="_blank" class="cta-ghost" style="color:var(--char);border-color:rgba(30,26,22,0.3);">View Membership Plans</a>
+      <a href="https://mastercraftglobal.com/academy/" target="_blank" class="ac-btn-gold">Join the Academy →</a>
+      <a href="https://mastercraftglobal.com/academy/#membership" target="_blank" class="ac-btn-outline">View Membership Plans</a>
     </div>
   </div>
   <div class="reveal rd1">
     <div class="ai-blocks">
-      <div class="ai-block">
-        <div class="ai-block-label">Meets</div>
-        <div class="ai-block-val">At least once per month</div>
-      </div>
-      <div class="ai-block">
-        <div class="ai-block-label">What Happens</div>
-        <div class="ai-block-val">Training · Networking · Mentorship · Rehearsals · Community</div>
-      </div>
-      <div class="ai-block">
-        <div class="ai-block-label">Open To</div>
-        <div class="ai-block-val">All experience levels — beginners welcome</div>
-      </div>
-      <div class="ai-block">
-        <div class="ai-block-label">Membership Model</div>
-        <div class="ai-block-val">Monthly subscription — three tiers</div>
-      </div>
-      <div class="ai-block">
-        <div class="ai-block-label">Run By</div>
-        <div class="ai-block-val">Mastercraft Global Ltd · Founded by Yemi Laja</div>
-      </div>
+      <div class="ai-block"><div class="ai-block-label">Meets</div><div class="ai-block-val">At least once per month</div></div>
+      <div class="ai-block"><div class="ai-block-label">What Happens</div><div class="ai-block-val">Training · Networking · Mentorship · Rehearsals · Community</div></div>
+      <div class="ai-block"><div class="ai-block-label">Open To</div><div class="ai-block-val">All experience levels — beginners welcome</div></div>
+      <div class="ai-block"><div class="ai-block-label">Membership Model</div><div class="ai-block-val">Monthly subscription — three tiers</div></div>
+      <div class="ai-block"><div class="ai-block-label">Run By</div><div class="ai-block-val">Mastercraft Global Ltd · Founded by Yemi Laja</div></div>
     </div>
   </div>
 </section>
@@ -155,8 +161,10 @@ page_styles: |
   <div class="reveal">
     <h2 class="act-heading">Ready to <em>Join Us?</em></h2>
     <p class="act-body">Registration and full membership details — including final pricing, meeting schedules, and onboarding — are managed through the Mastercraft Global website. Click below to register your interest.</p>
-    <a href="https://mastercraftglobal.com/academy/" target="_blank" class="btn-gold" style="display:inline-block;margin-right:1rem;">Join the Academy →</a>
-    <a href="https://mastercraftglobal.com/academy/#membership" target="_blank" class="btn-outline-white" style="display:inline-block;">View Membership Plans</a>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="https://mastercraftglobal.com/academy/" target="_blank" class="ac-btn-gold">Join the Academy →</a>
+      <a href="https://mastercraftglobal.com/academy/#membership" target="_blank" class="ac-btn-outline-white">View Membership Plans</a>
+    </div>
   </div>
   <div class="act-right reveal rd1">
     <h3>Membership Plans</h3>
@@ -173,7 +181,7 @@ page_styles: |
       <span class="act-plan-price">£10 / month</span>
     </div>
     <p style="font-size:0.78rem;color:rgba(244,244,240,0.35);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">Prices indicative — final pricing confirmed on registration.</p>
-    <a href="https://mastercraftglobal.com/academy/#register" target="_blank" class="btn-gold" style="display:inline-block;width:100%;text-align:center;">Register on Mastercraft →</a>
+    <a href="https://mastercraftglobal.com/academy/#register" target="_blank" class="ac-btn-gold" style="width:100%;text-align:center;">Register on Mastercraft →</a>
   </div>
 </section>
 
@@ -184,3 +192,30 @@ page_styles: |
   </div>
   <a href="/services/" class="cta-dark">All Services</a>
 </div>
+
+<!-- ACADEMY SLIDE-UP POPUP -->
+<div id="academy-slide-popup">
+  <div class="asp-icon">MC</div>
+  <div class="asp-text">
+    <div class="asp-label">Now Open · Mastercraft</div>
+    <div class="asp-title">Music &amp; Theatre Academy</div>
+    <div class="asp-sub">Monthly membership · All experience levels welcome</div>
+  </div>
+  <a href="https://mastercraftglobal.com/academy/" target="_blank" class="asp-cta">Join Now</a>
+  <button class="asp-close" onclick="dismissAcademyPopup()" aria-label="Dismiss">✕</button>
+</div>
+
+<script>
+(function(){
+  if(sessionStorage.getItem('academyPopupDismissed')) return;
+  setTimeout(function(){
+    var p = document.getElementById('academy-slide-popup');
+    if(p) p.classList.add('visible');
+  }, 3000);
+})();
+function dismissAcademyPopup(){
+  var p = document.getElementById('academy-slide-popup');
+  if(p){ p.style.bottom='-200px'; setTimeout(function(){ p.style.display='none'; },500); }
+  sessionStorage.setItem('academyPopupDismissed','1');
+}
+</script>
