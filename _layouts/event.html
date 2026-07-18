@@ -21,5 +21,6 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 {% if page.extra_js %}{{ page.extra_js }}{% endif %}
 </script>
+{% include academy-popup.html %}
 </body>
 </html>
