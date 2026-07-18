@@ -1,7 +1,7 @@
 title: Yemi Laja
 description: Performing Artist · Transformational Coach · Creative Director
 url: "https://yemilaja.co.uk"
-baseurl: ""
+baseurl: "/yemi-jekyll"
 
 # Build
 markdown: kramdown
