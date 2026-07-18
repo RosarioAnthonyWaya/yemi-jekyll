@@ -1,0 +1,20 @@
+title: Yemi Laja
+description: Performing Artist · Transformational Coach · Creative Director
+url: "https://yemilaja.co.uk"
+baseurl: ""
+
+# Build
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% include sticky-bar.html %}
+{% include popup.html %}
+{% include cursor.html %}
+{% include nav.html %}
+
+{{ content }}
+
+{% include footer.html %}
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeVideo()">✕ Close</button>
+    <iframe class="modal-video" id="videoFrame" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
+
+<script>
+function openMobNav(){ document.getElementById('mobNav').classList.add('open'); }
+function closeMobNav(){ document.getElementById('mobNav').classList.remove('open'); }
+
+function closePopup(){
+  const p = document.getElementById('ic-popup');
+  p.style.opacity = '0';
+  setTimeout(() => p.style.display = 'none', 300);
+}
+setTimeout(() => {
+  const p = document.getElementById('ic-popup');
+  if(p){ p.style.display = 'flex'; setTimeout(() => p.style.opacity = '1', 50); }
+}, 1500);
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const bar = document.getElementById('ic-bar');
+  const barH = bar?.style.display === 'none' ? 0 : (bar?.offsetHeight || 0);
+  nav.style.top = barH + 'px';
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+function openVideo(src){ document.getElementById('videoFrame').src = src; document.getElementById('videoModal').classList.add('open'); }
+function closeVideo(){ document.getElementById('videoFrame').src = ''; document.getElementById('videoModal').classList.remove('open'); }
+document.getElementById('videoModal').addEventListener('click', e => { if(e.target === e.currentTarget) closeVideo(); });
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

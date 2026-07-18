@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% include cursor.html %}
+{% include nav.html %}
+
+{{ content }}
+
+{% include footer.html %}
+<script>
+function openMobNav(){ document.getElementById('mobNav').classList.add('open'); }
+function closeMobNav(){ document.getElementById('mobNav').classList.remove('open'); }
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+{% if page.extra_js %}{{ page.extra_js }}{% endif %}
+</script>
+</body>
+</html>

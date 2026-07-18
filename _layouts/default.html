@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% unless page.hide_bar %}{% include sticky-bar.html %}{% endunless %}
+{% unless page.hide_popup %}{% include popup.html %}{% endunless %}
+{% include cursor.html %}
+{% include nav.html %}
+
+{{ content }}
+
+{% include footer.html %}
+{% include scripts.html %}
+</body>
+</html>

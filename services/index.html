@@ -1,0 +1,107 @@
+---
+layout: "default"
+title: "Services"
+nav_class: "scrolled"
+page_styles: |
+  #services-intro { padding:6rem 6rem 4rem; background:var(--white); }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--stone); margin-top:4rem; }
+  .svc-card {
+    background:var(--white); padding:3.5rem 3rem;
+    text-decoration:none; color:inherit;
+    position:relative; overflow:hidden;
+    transition:background 0.3s;
+    display:block;
+  }
+  .svc-card::after {
+    content:''; position:absolute; bottom:0; left:0;
+    width:100%; height:3px; background:var(--gold);
+    transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+  }
+  .svc-card:hover::after { transform:scaleX(1); }
+  .svc-card:hover { background:var(--ivory); }
+  .svc-num {
+    font-family:'Playfair Display',serif;
+    font-size:5rem; font-weight:300;
+    color:rgba(201,168,76,0.12); line-height:1; margin-bottom:1.5rem;
+  }
+  .svc-label { font-size:0.62rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
+  .svc-title {
+    font-family:'Playfair Display',serif;
+    font-size:1.8rem; font-weight:300; color:var(--char);
+    line-height:1.15; margin-bottom:1rem;
+  }
+  .svc-title em { font-style:italic; color:var(--gold); }
+  .svc-body { font-size:0.88rem; line-height:1.85; color:var(--mist); margin-bottom:2rem; }
+  .svc-link {
+    font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:0.6rem;
+    transition:gap 0.3s;
+  }
+  .svc-card:hover .svc-link { gap:1.2rem; }
+  .svc-link::after { content:'→'; }
+  .svc-card.external .svc-link::after { content:'↗'; }
+  .svc-img { width:100%; height:auto; display:block; filter:sepia(8%); margin-bottom:1.5rem; }
+  
+  @media(min-width:1025px){
+    .page-hero { align-items:center; min-height:70vh; }
+    .page-hero-content { padding-top:8rem; }
+  }
+  @media(max-width:1024px){ #services-intro{padding:5rem 3rem 3rem;} .services-grid{grid-template-columns:1fr;} }
+  @media(max-width:767px){ #services-intro{padding:4rem 1.5rem 2rem;} }
+---
+
+<section class="page-hero">
+  <div class="page-hero-bg"><img src= alt="Services"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">What Yemi Offers</p>
+    <h1 class="page-title">Services &amp; <em>Expertise</em></h1>
+    <p class="page-subtitle">Coaching, creative direction, and UK Global Talent Endorsement support — delivered with purpose and excellence.</p>
+  </div>
+</section>
+
+<section id="services-intro">
+  <div class="reveal">
+    <p class="section-label">Three Areas of Work</p>
+    <h2 class="section-heading" style="color:var(--char);">Built Beyond <em>the Stage</em></h2>
+    <p style="font-size:1rem;line-height:1.95;color:var(--mist);max-width:640px;margin-top:1.2rem;">Beyond performing, Yemi leads a suite of services designed to develop people, direct creative visions, and support individuals through life-changing processes. Each service is delivered personally — with clarity, depth, and excellence.</p>
+  </div>
+  <div class="services-grid reveal rd1">
+
+    <a href="/services/coaching/" class="svc-card">
+      <img src="/photos/yemi-07.png" class="svc-img" alt="Mastercraft Coaching">
+      <div class="svc-num">01</div>
+      <div class="svc-label">For Everyone</div>
+      <div class="svc-title">Mastercraft <em>Coaching</em></div>
+      <p class="svc-body">Transformational coaching for individuals and organisations — to discover themselves, master their minds, and fulfil their purpose on earth. 1-to-1, group, and conference formats available.</p>
+      <div class="svc-link">Explore Coaching</div>
+    </a>
+
+    <a href="/services/directing/" class="svc-card">
+      <img src="/photos/yemi-14.jpg" class="svc-img" alt="Creative Directing">
+      <div class="svc-num">02</div>
+      <div class="svc-label">For Productions & Brands</div>
+      <div class="svc-title">Creative Directing <em>&amp; Producing</em></div>
+      <p class="svc-body">Creative direction and production across music, film, theatre, and events. From concept to execution — bringing visions to life with excellence and intentionality.</p>
+      <div class="svc-link">Explore Directing</div>
+    </a>
+
+    <a href="https://mastercraftglobal.com" target="_blank" class="svc-card external">
+      <img src="/photos/yemi-17.jpg" class="svc-img" alt="Global Talent Endorsement">
+      <div class="svc-num">03</div>
+      <div class="svc-label">UK Global Talent · Arts &amp; Culture</div>
+      <div class="svc-title">Global Talent <em>Endorsement</em></div>
+      <p class="svc-body">Expert support for your UK Global Talent Endorsement application. Yemi is a UK Global Talent herself with a 100% success rate. Full packages available — from initial consultation to full application support.</p>
+      <div class="svc-link">Visit Mastercraft Global</div>
+    </a>
+
+  </div>
+</section>
+
+<div id="cta-band" class="reveal">
+  <div class="cta-band-text">
+    <p class="cta-band-eyebrow">Not sure which service?</p>
+    <h2 class="cta-band-heading">Let's find the right <em>path for you.</em></h2>
+  </div>
+  <a href="/contact/" class="cta-dark">Get in Touch</a>
+</div>
