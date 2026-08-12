@@ -181,11 +181,17 @@ page_styles: |
   </div>
   <div class="reveal rd1">
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:300;color:var(--char);margin-bottom:2rem;">Book a Coaching <em>Session</em></h3>
-    <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div></div>
-    <div class="form-row"><div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="+44 ..."></div><div class="form-group"><label class="form-label">Coaching Format</label><select class="form-select"><option value="">Select format</option><option>1-Month Package (£700)</option><option>3-Month Package (£1,500)</option><option>6-Month Package (£3,000)</option><option>Group Coaching — One-Off Intensive (£600)</option></select></div></div>
-    <div class="form-group"><label class="form-label">What do you want to achieve?</label><textarea class="form-textarea" placeholder="Tell us where you are right now and what you're hoping to gain through coaching..."></textarea></div>
-    <button onclick="this.textContent='Request Sent ✓';this.disabled=true;this.style.background='var(--gold-dim)';" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Booking Request</button>
+    <form id="form-coaching-booking" onsubmit="return submitToN8n(event, 'https://n8n.srv972321.hstgr.cloud/webhook/yemi-coaching-booking')">
+    <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+    <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" name="name" required class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div></div>
+    <div class="form-row"><div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone" class="form-input" placeholder="+44 ..."></div><div class="form-group"><label class="form-label">Coaching Format</label><select name="package_selected" required class="form-select"><option value="">Select format</option><option>1-Month Package (£700)</option><option>3-Month Package (£1,500)</option><option>6-Month Package (£3,000)</option><option>Group Coaching — One-Off Intensive (£600)</option></select></div></div>
+    <div class="form-group"><label class="form-label">What do you want to achieve?</label><textarea name="goals" class="form-textarea" placeholder="Tell us where you are right now and what you're hoping to gain through coaching..."></textarea></div>
+    <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Booking Request</button>
+    <p class="form-status" hidden style="font-size:0.78rem;color:var(--mist);margin-top:1rem;line-height:1.7;"></p>
+    </form>
   </div>
 </section>
+
+{% include yl-form-script.html %}
 
 <div id="cta-band" class="reveal"><div class="cta-band-text"><p class="cta-band-eyebrow">Explore more</p><h2 class="cta-band-heading">See all <em>services.</em></h2></div><a href="/services/" class="cta-dark">Back to Services</a></div>

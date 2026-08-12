@@ -221,15 +221,18 @@ page_styles: |
   </div>
   <div class="reveal rd1">
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:300;color:var(--char);margin-bottom:2rem;">Register <em>Now</em></h3>
+    <form id="form-webinar" onsubmit="return submitToN8n(event, 'https://n8n.srv972321.hstgr.cloud/webhook/yemi-form')">
+    <input type="hidden" name="tab_type" value="webinar">
+    <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
     <div class="form-row">
-      <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Your first name"></div>
-      <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Your last name"></div>
+      <div class="form-group"><label class="form-label">First Name</label><input type="text" name="first_name" required class="form-input" placeholder="Your first name"></div>
+      <div class="form-group"><label class="form-label">Last Name</label><input type="text" name="last_name" required class="form-input" placeholder="Your last name"></div>
     </div>
-    <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-    <div class="form-group"><label class="form-label">Country</label><input type="text" class="form-input" placeholder="Country of residence"></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div>
+    <div class="form-group"><label class="form-label">Country</label><input type="text" name="country" class="form-input" placeholder="Country of residence"></div>
     <div class="form-group">
       <label class="form-label">Your Creative Discipline</label>
-      <select class="form-select">
+      <select name="discipline" required class="form-select">
         <option value="">Select your discipline</option>
         <option>Music</option>
         <option>Theatre / Stage</option>
@@ -243,7 +246,7 @@ page_styles: |
     </div>
     <div class="form-group">
       <label class="form-label">Where are you in the process?</label>
-      <select class="form-select">
+      <select name="process_stage" class="form-select">
         <option value="">Select one</option>
         <option>Just exploring — want to find out if I qualify</option>
         <option>Researching — starting to think seriously about applying</option>
@@ -253,12 +256,16 @@ page_styles: |
     </div>
     <div class="form-group">
       <label class="form-label">Anything specific you want covered? (optional)</label>
-      <textarea class="form-textarea" placeholder="Tell us what questions you're hoping the webinar will answer..."></textarea>
+      <textarea name="questions" class="form-textarea" placeholder="Tell us what questions you're hoping the webinar will answer..."></textarea>
     </div>
-    <button onclick="this.textContent='Registration Confirmed ✓';this.disabled=true;this.style.background='var(--gold-dim)';" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Register for Free Webinar</button>
+    <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Register for Free Webinar</button>
+    <p class="form-status" hidden style="font-size:0.78rem;color:var(--mist);margin-top:1rem;line-height:1.7;"></p>
     <p style="font-size:0.78rem;color:var(--mist);margin-top:1rem;line-height:1.7;">You'll receive a confirmation email with webinar details. Your information will not be shared with third parties.</p>
+    </form>
   </div>
 </section>
+
+{% include yl-form-script.html %}
 
 <div id="cta-band" class="reveal">
   <div class="cta-band-text">

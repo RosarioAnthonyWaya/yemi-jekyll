@@ -86,8 +86,6 @@ page_styles: |
       <div class="ci-item"><div class="ci-label">Response Time</div><div class="ci-val">48–72 hours</div><div class="ci-sub">All enquiries are read personally by Yemi or her team.</div></div>
       <div class="ci-item"><div class="ci-label">Booking Notes</div><div class="ci-val">Plan ahead</div><div class="ci-sub">Yemi books 6–8 weeks in advance for most events. Contact early to secure your date.</div></div>
       <div class="ci-item"><div class="ci-label">Based In</div><div class="ci-val">London, UK</div><div class="ci-sub">Available for events across the UK, Nigeria, Ireland and all over the world.</div></div>
-
-    </div>
       <div class="contact-socials">
         <a href="https://www.instagram.com/yemi_laja/" class="contact-social">Instagram</a>
         <a href="https://www.facebook.com/omolaja.olayemi.5/" class="contact-social">Facebook</a>
@@ -95,31 +93,102 @@ page_styles: |
       </div>
     </div>
     <div class="reveal reveal-delay-1">
-      <div class="form-panel active" id="form-booking">
+      <form class="form-panel active" id="form-booking" onsubmit="return submitEnquiry(event)">
         <h3 class="form-heading">Book a <em>Performance</em></h3>
-        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="Church / company name"></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div><div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="+44 ..."></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Event Date</label><input type="date" class="form-input"></div><div class="form-group"><label class="form-label">Location</label><input type="text" class="form-input" placeholder="City, Country"></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Performance Type</label><select class="form-select"><option value="">Select type</option><option>Live Worship</option><option>Spoken Word</option><option>Conference / Summit</option><option>Concert</option><option>Church Service</option><option>Corporate Event</option><option>Other</option></select></div><div class="form-group"><label class="form-label">Audience Size</label><select class="form-select"><option value="">Estimated size</option><option>Under 100</option><option>100–500</option><option>500–1,000</option><option>1,000–5,000</option><option>5,000+</option></select></div></div>
-        <div class="form-group"><label class="form-label">Event Description</label><textarea class="form-textarea" placeholder="Tell us about your event, vision, and how Yemi fits in..."></textarea></div>
-        <button onclick="submitForm(this)" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Booking Enquiry</button>
-      </div>
-      <div class="form-panel" id="form-coaching">
+        <input type="hidden" name="tab_type" value="booking">
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" name="name" required class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Organisation</label><input type="text" name="organisation" class="form-input" placeholder="Church / company name"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Email</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div><div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone" class="form-input" placeholder="+44 ..."></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Event Date</label><input type="date" name="event_date" class="form-input"></div><div class="form-group"><label class="form-label">Location</label><input type="text" name="location" class="form-input" placeholder="City, Country"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Performance Type</label><select name="performance_type" class="form-select"><option value="">Select type</option><option>Live Worship</option><option>Spoken Word</option><option>Conference / Summit</option><option>Concert</option><option>Church Service</option><option>Corporate Event</option><option>Other</option></select></div><div class="form-group"><label class="form-label">Audience Size</label><select name="audience_size" class="form-select"><option value="">Estimated size</option><option>Under 100</option><option>100–500</option><option>500–1,000</option><option>1,000–5,000</option><option>5,000+</option></select></div></div>
+        <div class="form-group"><label class="form-label">Event Description</label><textarea name="event_description" class="form-textarea" placeholder="Tell us about your event, vision, and how Yemi fits in..."></textarea></div>
+        <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Booking Enquiry</button>
+        <p class="form-note form-status" hidden></p>
+      </form>
+      <form class="form-panel" id="form-coaching" onsubmit="return submitEnquiry(event)">
         <h3 class="form-heading">Coaching <em>Enquiry</em></h3>
-        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Creative Discipline</label><select class="form-select"><option value="">Select discipline</option><option>Music</option><option>Spoken Word</option><option>Film / Visual Arts</option><option>Writing</option><option>Ministry / Preaching</option><option>Other</option></select></div><div class="form-group"><label class="form-label">Preferred Format</label><select class="form-select"><option value="">Select format</option><option>One-on-One</option><option>Group Sessions</option><option>Online</option><option>In-Person</option></select></div></div>
-        <div class="form-group"><label class="form-label">Your Goals</label><textarea class="form-textarea" placeholder="What do you want to achieve through coaching? What's holding you back right now?"></textarea></div>
-        <button onclick="submitForm(this)" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Coaching Enquiry</button>
-      </div>
-      <div class="form-panel" id="form-design">
+        <input type="hidden" name="tab_type" value="coaching">
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" name="name" required class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Email</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Creative Discipline</label><select name="creative_discipline" class="form-select"><option value="">Select discipline</option><option>Music</option><option>Spoken Word</option><option>Film / Visual Arts</option><option>Writing</option><option>Ministry / Preaching</option><option>Other</option></select></div><div class="form-group"><label class="form-label">Preferred Format</label><select name="preferred_format" class="form-select"><option value="">Select format</option><option>One-on-One</option><option>Group Sessions</option><option>Online</option><option>In-Person</option></select></div></div>
+        <div class="form-group"><label class="form-label">Your Goals</label><textarea name="goals" class="form-textarea" placeholder="What do you want to achieve through coaching? What's holding you back right now?"></textarea></div>
+        <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Coaching Enquiry</button>
+        <p class="form-note form-status" hidden></p>
+      </form>
+      <form class="form-panel" id="form-design" onsubmit="return submitEnquiry(event)">
         <h3 class="form-heading">Directing & <em>Producing</em></h3>
-        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Organisation</label><input type="text" class="form-input" placeholder="Company / church name"></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div><div class="form-group"><label class="form-label">Website</label><input type="url" class="form-input" placeholder="https://yoursite.com"></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">Service Required</label><select class="form-select"><option value="">Select service</option><option>Directing</option>
-          <option>Creative Production</option><option>Event Production</option><option>Film & Media</option><option>Digital Content</option><option>Partnership / Collaboration</option></select></div><div class="form-group"><label class="form-label">Budget Range</label><select class="form-select"><option value="">Select range</option><option>Under £1,000</option><option>£1,000–£5,000</option><option>£5,000–£15,000</option><option>£15,000+</option><option>To be discussed</option></select></div></div>
-        <div class="form-group"><label class="form-label">Project Brief</label><textarea class="form-textarea" placeholder="Describe your project, vision, timeline, and any specific requirements..."></textarea></div>
-        <button onclick="submitForm(this)" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Project Brief</button>
-      </div>
+        <input type="hidden" name="tab_type" value="film">
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+        <div class="form-row"><div class="form-group"><label class="form-label">Your Name</label><input type="text" name="name" required class="form-input" placeholder="Full name"></div><div class="form-group"><label class="form-label">Organisation</label><input type="text" name="organisation" class="form-input" placeholder="Company / church name"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Email</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div><div class="form-group"><label class="form-label">Website</label><input type="url" name="website" class="form-input" placeholder="https://yoursite.com"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Service Required</label><select name="service_required" class="form-select"><option value="">Select service</option><option>Directing</option>
+          <option>Creative Production</option><option>Event Production</option><option>Film & Media</option><option>Digital Content</option><option>Partnership / Collaboration</option></select></div><div class="form-group"><label class="form-label">Budget Range</label><select name="budget_range" class="form-select"><option value="">Select range</option><option>Under £1,000</option><option>£1,000–£5,000</option><option>£5,000–£15,000</option><option>£15,000+</option><option>To be discussed</option></select></div></div>
+        <div class="form-group"><label class="form-label">Project Brief</label><textarea name="project_brief" class="form-textarea" placeholder="Describe your project, vision, timeline, and any specific requirements..."></textarea></div>
+        <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Project Brief</button>
+        <p class="form-note form-status" hidden></p>
+      </form>
     </div>
   </div>
 </section>
+
+<script>
+const YL_WEBHOOK_FORM = 'https://n8n.srv972321.hstgr.cloud/webhook/yemi-form';
+
+function switchForm(which, tabEl) {
+  document.querySelectorAll('.sel-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  if (tabEl) tabEl.classList.add('active');
+  const panel = document.getElementById('form-' + which);
+  if (panel) panel.classList.add('active');
+}
+
+async function submitEnquiry(ev) {
+  ev.preventDefault();
+  const form = ev.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const status = form.querySelector('.form-status');
+  const original = btn.textContent;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.page = window.location.pathname;
+  data.submittedAt = new Date().toISOString();
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  if (status) status.hidden = true;
+
+  try {
+    const res = await fetch(YL_WEBHOOK_FORM, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+    btn.textContent = 'Sent ✓';
+    btn.style.background = 'var(--gold-dim)';
+    form.querySelectorAll('input,select,textarea').forEach(el => el.disabled = true);
+    if (status) {
+      status.textContent = 'Thank you. Check your email for a confirmation within the next few minutes.';
+      status.hidden = false;
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = original;
+    if (status) {
+      status.textContent = 'Something went wrong sending your enquiry. Please try again, or email yemilaja@mastercraftglobal.com directly.';
+      status.hidden = false;
+    }
+  }
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.location.hash) {
+    const key = window.location.hash.replace('#', '');
+    const panel = document.getElementById('form-' + key);
+    if (panel) {
+      const idx = ['booking', 'coaching', 'design'].indexOf(key);
+      switchForm(key, document.querySelectorAll('.sel-tab')[idx]);
+    }
+  }
+});
+</script>
