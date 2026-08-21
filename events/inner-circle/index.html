@@ -169,17 +169,19 @@ page_styles: |
         <div class="reg-info-val"><a href="/contact/" style="color:var(--gold);text-decoration:none;">Contact the team →</a></div>
       </div>
     </div>
-    <div class="ic-reg-form">
+    <form class="ic-reg-form" id="form-innercircle" onsubmit="return submitToN8n(event, 'https://n8n.srv972321.hstgr.cloud/webhook/yemi-form')">
+      <input type="hidden" name="tab_type" value="inner-circle">
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
       <div class="form-row">
-        <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Your first name"></div>
-        <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Your last name"></div>
+        <div class="form-group"><label class="form-label">First Name</label><input type="text" name="first_name" required class="form-input" placeholder="Your first name"></div>
+        <div class="form-group"><label class="form-label">Last Name</label><input type="text" name="last_name" required class="form-input" placeholder="Your last name"></div>
       </div>
-      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" placeholder="+44 ..."></div>
-      <div class="form-group"><label class="form-label">Country</label><input type="text" class="form-input" placeholder="Country of residence"></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" required class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" name="phone" class="form-input" placeholder="+44 ..."></div>
+      <div class="form-group"><label class="form-label">Country</label><input type="text" name="country" class="form-input" placeholder="Country of residence"></div>
       <div class="form-group">
         <label class="form-label">How did you hear about Inner Circle?</label>
-        <select class="form-select">
+        <select name="hear_about" class="form-select">
           <option value="">Select one</option>
           <option>Instagram</option>
           <option>YouTube</option>
@@ -191,12 +193,15 @@ page_styles: |
       </div>
       <div class="form-group">
         <label class="form-label">What do you hope to experience?</label>
-        <textarea class="form-textarea" placeholder="Share a little about where you are right now and what you're hoping this programme will do for you..."></textarea>
+        <textarea name="hopes" required class="form-textarea" placeholder="Share a little about where you are right now and what you're hoping this programme will do for you..."></textarea>
       </div>
-      <button onclick="this.textContent='Registration Submitted ✓';this.disabled=true;this.style.background='var(--gold-dim)';" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;justify-content:center;">Register for Inner Circle</button>
-    </div>
+      <button type="submit" class="cta-primary" style="border:none;cursor:pointer;width:100%;text-align:center;justify-content:center;">Register for Inner Circle</button>
+      <p class="form-status" hidden style="font-size:0.78rem;color:var(--mist);margin-top:1rem;line-height:1.7;"></p>
+    </form>
   </div>
 </section>
+
+{% include yl-form-script.html %}
 
 <div id="cta-band" class="reveal">
   <div class="cta-band-text">

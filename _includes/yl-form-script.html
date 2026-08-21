@@ -1,0 +1,40 @@
+<script>
+async function submitToN8n(ev, webhookUrl) {
+  ev.preventDefault();
+  const form = ev.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const status = form.querySelector('.form-status');
+  const original = btn.textContent;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.page = window.location.pathname;
+  data.submittedAt = new Date().toISOString();
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  if (status) status.hidden = true;
+
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+    btn.textContent = 'Sent ✓';
+    btn.style.background = 'var(--gold-dim)';
+    form.querySelectorAll('input,select,textarea').forEach(el => el.disabled = true);
+    if (status) {
+      status.textContent = 'Thank you. Check your email for a confirmation within the next few minutes.';
+      status.hidden = false;
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = original;
+    if (status) {
+      status.textContent = 'Something went wrong sending your details. Please try again, or email yemilaja@mastercraftglobal.com directly.';
+      status.hidden = false;
+    }
+  }
+  return false;
+}
+</script>
